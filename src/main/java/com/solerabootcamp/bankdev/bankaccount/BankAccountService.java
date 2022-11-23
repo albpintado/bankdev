@@ -17,8 +17,8 @@ public class BankAccountService {
         return bankAccount;
     }
 
-    public int create(CreateBankAccountDto createBankAccountDto) {
-        return createBankAccountDto.userId;
+    public BankAccount create(CreateBankAccountDto createBankAccountDto) {
+        return this.repo.create(createBankAccountDto);
     }
 
     public List<BankAccount> delete(DeleteBankAccountDto deleteBankAccountDto) {
