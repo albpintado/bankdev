@@ -26,6 +26,10 @@ public class UserService {
         return userToSave;
     }
 
+    public boolean login() {
+        return true;
+    }
+
     public User update(UpdateUserDto updateUserDto) {
         Stream<User> users = this.repo.getUsers().stream().map(user -> {
             List<Integer> userBankAccounts = Stream.concat(user.getBankAccounts().stream(), Stream.of(updateUserDto.bankAccountId)).toList();
