@@ -1,7 +1,5 @@
 package com.solerabootcamp.bankdev.bankaccount;
 
-import com.solerabootcamp.bankdev.user.Data;
-import com.solerabootcamp.bankdev.user.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,13 +17,13 @@ public class BankAccountDataTests {
 
     @Test
     public void Data_WhenGetAfterCreation_ReturnsBankAccountsAndThirdIsExpected() {
-        List<BankAccount> bankAccounts = this.bankAccountsData.getUsers();
+        List<BankAccount> bankAccounts = this.bankAccountsData.getBankAccounts();
         int usersCount = this.bankAccountsData.getCount();
 
-        BankAccount thirdBankAccount = bankAccounts.stream().filter(streamUser -> streamUser.getId() == 3).findFirst().get();
+        BankAccount thirdBankAccount = bankAccounts.stream().filter(bankAccount -> bankAccount.getId() == 3).findFirst().get();
 
         assertEquals(9, usersCount);
         assertEquals(3, thirdBankAccount.getId());
-        assertEquals("Prueba 3", thirdBankAccount.getName());
+        assertEquals("Cuenta 3", thirdBankAccount.getName());
     }
 }
