@@ -43,6 +43,8 @@ public class UserServiceTests {
         loginDto.username = "solera";
         loginDto.password = "A12345678!";
 
+        Mockito.when(this.repo.login(loginDto.username, loginDto.password)).thenReturn(true);
+
         boolean loginResponse = this.service.login(loginDto);
 
         assertTrue(loginResponse);
