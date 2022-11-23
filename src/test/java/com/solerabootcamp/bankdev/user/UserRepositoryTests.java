@@ -16,17 +16,27 @@ public class UserRepositoryTests {
     private UserRepository repo;
 
     @Test
-    public void UserRepository_WhenGET_ReturnsUserNameAsString() {
+    public void UserRepository_WhenGetOne_ReturnsUserNameAsString() {
         String userNameReturned = this.repo.getOne(1).getUsername();
 
         assertEquals("Luis", userNameReturned);
     }
 
     @Test
-    public void UserRepository_WhenPOST_ReturnsUserNameAsString() {
-        String userNameReturned = this.repo.create();
+    public void UserRepository_WhenGetDataCount_Returns9() {
+        int dataCount = this.repo.getDataCount();
 
-        assertEquals("Alberto", userNameReturned);
+        assertEquals(9, dataCount);
+    }
+
+    @Test
+    public void UserRepository_WhenPOST_ReturnsUserNameAsString() {
+        User user = new User(10, "Jose", "Perez", "jose", "A12345678!", "jose".toLowerCase() + "@gmail.com", Math.floor(Math.random() * 1000000000) + "" );
+        String userNameCreatedResponse = this.repo.create(user);
+        int dataCount = this.repo.getDataCount();
+
+        assertEquals("Created", userNameCreatedResponse);
+        assertEquals(10, dataCount);
     }
 
     @Test
