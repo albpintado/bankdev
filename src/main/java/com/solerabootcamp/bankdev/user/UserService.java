@@ -14,8 +14,9 @@ public class UserService {
         return user;
     }
 
-    public String create() {
-        return "Alberto";
+    public String create(User user) {
+        this.repo.create(user);
+        return "Created";
     }
 
     public String update() {
