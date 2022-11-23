@@ -30,7 +30,7 @@ public class BankAccountServiceTests {
         CreateBankAccountDto createBankAccountDto = new CreateBankAccountDto();
         createBankAccountDto.name = "Cuenta 1";
         createBankAccountDto.userId = 1;
-        int actualResult = this.service.create(CreateBankAccountDto);
+        int actualResult = this.service.create(createBankAccountDto);
         assertEquals(createBankAccountDto.userId, actualResult);
     }
 
