@@ -32,10 +32,9 @@ public class UserRepository {
         return "Created";
     }
 
-    public String update(int id, String newName) {
-        User user = getOne(id);
-        user.setFirstName(newName);
-        return user.getFirstName();
+    public String update(Stream<User> users) {
+        this.users.setUsers(users);
+        return "Updated";
     }
 
     public String delete(int id) {

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.stream.Stream;
+
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
@@ -41,9 +43,27 @@ public class UserRepositoryTests {
 
     @Test
     public void UserRepository_WhenUpdate_ReturnsNewUserName() {
-        String userNameReturned = this.repo.update(0, "Luis");
+        UpdateUserDto userDto = new UpdateUserDto();
+        userDto.id = 0;
+        userDto.firstName = "Nuevo";
+        userDto.lastName = "Nuevo";
+        userDto.email = "Nuevo";
+        userDto.phone = "Nuevo";
 
-        assertEquals("Luis", userNameReturned);
+        Stream<User> users = this.repo.getUsers().stream().map(user -> {
+            if (user.getId() == userDto.id) {
+                user.setFirstName(userDto.firstName);
+                user.setLastName(userDto.lastName);
+                user.setEmail(userDto.email);
+                user.setPhone(userDto.phone);
+            }
+
+            return user;
+        });
+
+        String updateMessage = this.repo.update(users);
+
+        assertEquals("Updated", updateMessage);
     }
 
     @Test

@@ -31,9 +31,16 @@ public class UserControllerTests {
 
     @Test
     public void UserController_WhenPUT_ReturnsNewUserNameAsString() {
-        String userNameReturned = this.controller.update();
+        UpdateUserDto userDto = new UpdateUserDto();
+        userDto.id = 1;
+        userDto.firstName = "Nuevo";
+        userDto.lastName = "Nuevo";
+        userDto.email = "Nuevo";
+        userDto.phone = "Nuevo";
 
-        assertEquals("Alberto", userNameReturned);
+        String updateMessage = this.controller.update(userDto);
+
+        assertEquals("Updated", updateMessage);
     }
 
     @Test

@@ -27,13 +27,4 @@ public class UserServiceTests {
 
         assertEquals("Created", userNameCreatedResponse);
     }
-
-    @Test
-    public void UserRepository_WhenDelete_ReturnsDeletedMessageAndCurrentDataCount() {
-        String userNameReturned = this.repo.delete(0);
-        int dataCount = this.repo.getDataCount();
-
-        assertEquals("Deleted", userNameReturned);
-        assertEquals(8, dataCount);
-    }
 }

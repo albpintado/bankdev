@@ -3,6 +3,8 @@ package com.solerabootcamp.bankdev.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.stream.Stream;
+
 @Repository
 public class UserService {
 
@@ -19,11 +21,18 @@ public class UserService {
         return "Created";
     }
 
-    public String update(int id, String newName) {
-        return this.repo.update(id, newName);
-    }
+    public String update(UpdateUserDto updateUserDto) {
+        Stream<User> users = this.repo.getUsers().stream().map(user -> {
+            if (user.getId() == updateUserDto.id) {
+                user.setFirstName(updateUserDto.firstName);
+                user.setLastName(updateUserDto.lastName);
+                user.setEmail(updateUserDto.email);
+                user.setPhone(updateUserDto.phone);
+            }
 
-    public String delete() {
-        return "Deleted";
+            return user;
+        });
+
+        return this.repo.update(users);
     }
 }
