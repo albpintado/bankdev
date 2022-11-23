@@ -28,8 +28,10 @@ public class UserRepository {
         return "Created";
     }
 
-    public String update() {
-        return "Alberto";
+    public String update(int userId, String newName) {
+        User streamUser = this.users.getUsers().filter(user -> user.getId() == userId).findAny().get();
+        streamUser.setFirstName(newName);
+        return streamUser.getFirstName();
     }
 
     public String delete() {

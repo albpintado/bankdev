@@ -41,9 +41,9 @@ public class UserRepositoryTests {
 
     @Test
     public void UserRepository_WhenPUT_ReturnsNewUserNameAsString() {
-        String userNameReturned = this.repo.update();
+        String userNameReturned = this.repo.update(0, "Luis");
 
-        assertEquals("Alberto", userNameReturned);
+        assertEquals("Luis", userNameReturned);
     }
 
     @Test
