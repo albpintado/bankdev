@@ -6,39 +6,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class UserControllerTests {
+public class UserRepositoryTests {
 
     @Autowired
-    private UserController controller;
+    private UserRepository repo;
 
     @Test
-    public void UserController_WhenGET_ReturnsUserNameAsString() {
-        String userNameReturned = this.controller.getOne();
+    public void UserRepository_WhenGET_ReturnsUserNameAsString() {
+        String userNameReturned = this.repo.getOne();
 
         assertEquals("Alberto", userNameReturned);
     }
 
     @Test
-    public void UserController_WhenPOST_ReturnsUserNameAsString() {
-        String userNameReturned = this.controller.create();
+    public void UserRepository_WhenPOST_ReturnsUserNameAsString() {
+        String userNameReturned = this.repo.create();
 
         assertEquals("Alberto", userNameReturned);
     }
 
     @Test
-    public void UserController_WhenPUT_ReturnsNewUserNameAsString() {
-        String userNameReturned = this.controller.update();
+    public void UserRepository_WhenPUT_ReturnsNewUserNameAsString() {
+        String userNameReturned = this.repo.update();
 
         assertEquals("Alberto", userNameReturned);
     }
 
     @Test
-    public void UserController_WhenDELETE_ReturnsAString() {
-        String userNameReturned = this.controller.delete();
+    public void UserRepository_WhenDELETE_ReturnsAString() {
+        String userNameReturned = this.repo.delete();
 
         assertEquals("Deleted", userNameReturned);
     }
