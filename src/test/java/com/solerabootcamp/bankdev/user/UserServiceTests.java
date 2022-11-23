@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest
@@ -34,5 +35,12 @@ public class UserServiceTests {
         User actualUser = this.service.create(createUserDto);
 
         assertThat(userToSave).usingRecursiveComparison().isEqualTo(actualUser);
+    }
+
+    @Test
+    public void UserService_WhenLogin_ReturnsTrue() {
+        boolean loginResponse = this.service.login();
+
+        assertTrue(loginResponse);
     }
 }
