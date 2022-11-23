@@ -4,8 +4,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserRepository {
-    public String getOne() {
-        return "Alberto";
+
+    private Data users = new Data();
+
+    public User getOne(int id) {
+        User user = users.getUsers().filter(streamUser -> streamUser.getId() == id).findFirst().get();
+        return user;
     }
 
     public String create() {

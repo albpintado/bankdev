@@ -17,9 +17,9 @@ public class UserRepositoryTests {
 
     @Test
     public void UserRepository_WhenGET_ReturnsUserNameAsString() {
-        String userNameReturned = this.repo.getOne();
+        String userNameReturned = this.repo.getOne(1).getUsername();
 
-        assertEquals("Alberto", userNameReturned);
+        assertEquals("Luis", userNameReturned);
     }
 
     @Test

@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,11 +20,12 @@ public class DataTests {
 
     @Test
     public void Data_WhenGetAfterCreation_ReturnsUsersAndThirdIsExpected() {
-        List<User> users = this.data.getUsers();
+        Stream<User> users = this.data.getUsers();
+        int usersCount = this.data.getCount();
 
-        User firstUser = users.get(3);
+        User firstUser = users.filter(streamUser -> streamUser.getId() == 3).findFirst().get();
 
-        assertEquals(9, users.size());
+        assertEquals(9, usersCount);
         assertEquals(3, firstUser.getId());
         assertEquals("Pedro", firstUser.getUsername());
     }
