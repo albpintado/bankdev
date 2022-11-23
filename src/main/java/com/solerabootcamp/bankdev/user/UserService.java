@@ -19,8 +19,8 @@ public class UserService {
         return "Created";
     }
 
-    public String update() {
-        return "Alberto";
+    public String update(int id, String newName) {
+        return this.repo.update(id, newName);
     }
 
     public String delete() {
