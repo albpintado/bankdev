@@ -39,7 +39,11 @@ public class UserServiceTests {
 
     @Test
     public void UserService_WhenLogin_ReturnsTrue() {
-        boolean loginResponse = this.service.login();
+        LoginDto loginDto = new LoginDto();
+        loginDto.username = "solera";
+        loginDto.password = "A12345678!";
+
+        boolean loginResponse = this.service.login(loginDto);
 
         assertTrue(loginResponse);
     }
