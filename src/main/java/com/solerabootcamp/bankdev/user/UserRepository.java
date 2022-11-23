@@ -2,6 +2,7 @@ package com.solerabootcamp.bankdev.user;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 @Repository
@@ -11,6 +12,10 @@ public class UserRepository {
 
     public UserRepository() {
         this.users =  new Data();
+    }
+
+    public List<User> getUsers() {
+        return this.users.getUsers().toList();
     }
 
     public User getOne(int id) {

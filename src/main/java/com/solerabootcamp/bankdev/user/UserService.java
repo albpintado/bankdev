@@ -1,11 +1,17 @@
 package com.solerabootcamp.bankdev.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserService {
-    public String getOne() {
-        return "Alberto";
+
+    @Autowired
+    private UserRepository repo;
+
+    public User getOne(int id) {
+        User user = this.repo.getOne(id);
+        return user;
     }
 
     public String create() {

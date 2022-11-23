@@ -13,13 +13,13 @@ public class Data {
     private int userId = 0;
 
     public Data() {
-        List<String> names = Arrays.asList("Alberto", "Luis", "Miguel", "Pedro", "Juan", "Alejandro", "Andrea", "Paola", "Moises");
+        List<String> names = Arrays.asList("Solera", "Luis", "Miguel", "Pedro", "Juan", "Alejandro", "Andrea", "Paola", "Moises");
         Stream<String> streamNames = names.stream();
 
         Random random = new Random();
         String randomLastName = names.get(random.nextInt(names.size()));
 
-        this.users = streamNames.map(name -> new User(userId++, name, randomLastName, name, "A12345678!", name.toLowerCase() + "@gmail.com", Math.floor(Math.random() * 1000000000) + "" ));
+        this.users = streamNames.map(name -> new User(userId++, name, randomLastName, name.toLowerCase(), "bootcamp4", name.toLowerCase() + "@solera.com", Math.floor(Math.random() * 1000000000) + "" ));
         this.count = names.size();
     }
 

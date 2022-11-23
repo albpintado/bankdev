@@ -54,6 +54,5 @@ public class UserRepositoryTests {
 
         assertEquals("Deleted", userNameReturned);
         assertEquals(8, dataCount);
-
     }
 }
