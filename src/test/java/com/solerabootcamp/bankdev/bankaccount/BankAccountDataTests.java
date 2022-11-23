@@ -28,16 +28,4 @@ public class BankAccountDataTests {
         assertEquals(3, thirdBankAccount.getId());
         assertEquals("Prueba 3", thirdBankAccount.getName());
     }
-
-    @Test
-    public void Data_WhenGetAfterCreation_ReturnsBankAccountsAndThirdIsExpected() {
-        List<BankAccount> bankAccounts = this.bankAccountsData.getUsers();
-        int usersCount = this.bankAccountsData.getCount();
-
-        BankAccount thirdBankAccount = bankAccounts.stream().filter(streamUser -> streamUser.getId() == 3).findFirst().get();
-
-        assertEquals(9, usersCount);
-        assertEquals(3, thirdBankAccount.getId());
-        assertEquals("Prueba 3", thirdBankAccount.getName());
-    }
 }
