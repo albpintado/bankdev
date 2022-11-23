@@ -16,9 +16,12 @@ public class UserService {
         return user;
     }
 
-    public String create(User user) {
-        this.repo.create(user);
-        return "Created";
+    public User create(CreateUserDto createUserDto) {
+        int newId = this.repo.getDataCount();
+        User userToSave = new User(newId, createUserDto.firstName, createUserDto.lastName, createUserDto.username, createUserDto.password, "", "");
+
+        this.repo.create(userToSave);
+        return userToSave;
     }
 
     public String update(UpdateUserDto updateUserDto) {

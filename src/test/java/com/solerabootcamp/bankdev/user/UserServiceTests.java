@@ -7,8 +7,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -21,10 +21,18 @@ public class UserServiceTests {
     private UserRepository repo;
 
     @Test
-    public void UserRepository_WhenCreate_ReturnsCreatedMessage() {
-        User user = new User(10, "Jose", "Perez", "jose", "A12345678!", "jose".toLowerCase() + "@gmail.com", Math.floor(Math.random() * 1000000000) + "" );
-        String userNameCreatedResponse = this.service.create(user);
+    public void UserRepository_WhenCreate_ReturnsUserCreated() {
+        CreateUserDto createUserDto = new CreateUserDto();
+        createUserDto.firstName = "Isabel";
+        createUserDto.lastName = "Lozano";
+        createUserDto.username = "isabel";
+        createUserDto.password = "A12345678!";
 
-        assertEquals("Created", userNameCreatedResponse);
+        Mockito.when(this.repo.getDataCount()).thenReturn(9);
+
+        User userToSave = new User(9, createUserDto.firstName, createUserDto.lastName, createUserDto.username, createUserDto.password, "", "");
+        User actualUser = this.service.create(createUserDto);
+
+        assertThat(userToSave).usingRecursiveComparison().isEqualTo(actualUser);
     }
 }

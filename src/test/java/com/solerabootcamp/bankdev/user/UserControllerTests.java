@@ -24,9 +24,16 @@ public class UserControllerTests {
 
     @Test
     public void UserController_WhenPOST_ReturnsUserNameAsString() {
-        String userNameReturned = this.controller.create();
+        CreateUserDto createUserDto = new CreateUserDto();
+        createUserDto.firstName = "Isabel";
+        createUserDto.lastName = "Lozano";
+        createUserDto.username = "isabel";
+        createUserDto.password = "A12345678!";
+        User actualUser = this.controller.create(createUserDto);
 
-        assertEquals("Alberto", userNameReturned);
+        User expectedUser = new User(10, "Isabel", "Lozano", "isabel", "A12345678!", "", "");
+
+        assertEquals(expectedUser, actualUser);
     }
 
     @Test
@@ -41,12 +48,5 @@ public class UserControllerTests {
         String updateMessage = this.controller.update(userDto);
 
         assertEquals("Updated", updateMessage);
-    }
-
-    @Test
-    public void UserController_WhenDELETE_ReturnsAString() {
-        String userNameReturned = this.controller.delete();
-
-        assertEquals("Deleted", userNameReturned);
     }
 }

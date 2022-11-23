@@ -16,17 +16,12 @@ public class UserController {
     }
 
     @PostMapping()
-    public String create() {
-        return "Alberto";
+    public User create(CreateUserDto createUserDto) {
+        return this.service.create(createUserDto);
     }
 
     @PutMapping()
     public String update(@RequestBody UpdateUserDto updateUserDto) {
         return this.service.update(updateUserDto);
-    }
-
-    @DeleteMapping()
-    public String delete() {
-        return "Deleted";
     }
 }
