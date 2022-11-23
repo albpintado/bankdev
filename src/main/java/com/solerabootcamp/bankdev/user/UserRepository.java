@@ -8,10 +8,10 @@ import java.util.stream.Stream;
 @Repository
 public class UserRepository {
 
-    private Data users;
+    private UserData users;
 
     public UserRepository() {
-        this.users =  new Data();
+        this.users =  new UserData();
     }
 
     public List<User> getUsers() {

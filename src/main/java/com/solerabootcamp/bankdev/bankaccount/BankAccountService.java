@@ -1,5 +1,7 @@
 package com.solerabootcamp.bankdev.bankaccount;
 
+import com.solerabootcamp.bankdev.user.UpdateUserDto;
+import com.solerabootcamp.bankdev.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,13 +14,22 @@ public class BankAccountService {
     @Autowired
     private BankAccountRepository repo;
 
+    @Autowired
+    private UserService userService;
+
     public BankAccount getOne(BankAccountDto bankAccountDto) {
         BankAccount bankAccount = this.repo.getOne(bankAccountDto.id);
         return bankAccount;
     }
 
     public BankAccount create(CreateBankAccountDto createBankAccountDto) {
-        return this.repo.create(createBankAccountDto);
+        BankAccount bankAccount = this.repo.create(createBankAccountDto);
+        UpdateUserDto updateUserDto = new UpdateUserDto();
+        updateUserDto.id = createBankAccountDto.userId;
+        updateUserDto.bankAccountId = bankAccount.getId();
+        this.userService.update(updateUserDto);
+
+        return bankAccount;
     }
 
     public List<BankAccount> delete(DeleteBankAccountDto deleteBankAccountDto) {

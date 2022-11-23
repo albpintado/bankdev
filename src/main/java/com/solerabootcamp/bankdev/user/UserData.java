@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
-public class Data {
+public class UserData {
     private List<User> users;
 
     private int count;
 
     private int userId = 0;
 
-    public Data() {
+    public UserData() {
         List<String> names = Arrays.asList("Solera", "Luis", "Miguel", "Pedro", "Juan", "Alejandro", "Andrea", "Paola", "Moises");
         Stream<String> streamNames = names.stream();
 

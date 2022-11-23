@@ -1,7 +1,13 @@
 package com.solerabootcamp.bankdev.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private int id;
+
+    private List<Integer> bankAccounts;
+
     private String firstName;
     private String lastName;
     private String username;
@@ -11,6 +17,7 @@ public class User {
 
     public User(int id, String firstName, String lastName, String username, String password, String email, String phone) {
         this.id = id;
+        this.bankAccounts = new ArrayList<>();
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -25,6 +32,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Integer> getBankAccounts() {
+        return bankAccounts;
+    }
+
+    public void setBankAccounts(List<Integer> bankAccounts) {
+        this.bankAccounts = bankAccounts;
     }
 
     public String getFirstName() {

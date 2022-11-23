@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
-public class BankAccountServiceTests {
+public class UserServiceTests {
 
     @InjectMocks
     private UserService service = new UserService();

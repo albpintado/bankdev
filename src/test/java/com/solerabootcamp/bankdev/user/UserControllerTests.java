@@ -9,11 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anyInt;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class BankAccountControllerTests {
+public class UserControllerTests {
 
     @InjectMocks
     private UserController controller = new UserController();

@@ -1,8 +1,10 @@
 package com.solerabootcamp.bankdev.user;
 
+import com.solerabootcamp.bankdev.bankaccount.BankAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 @Repository
@@ -26,7 +28,9 @@ public class UserService {
 
     public User update(UpdateUserDto updateUserDto) {
         Stream<User> users = this.repo.getUsers().stream().map(user -> {
+            List<Integer> userBankAccounts = Stream.concat(user.getBankAccounts().stream(), Stream.of(updateUserDto.bankAccountId)).toList();
             if (user.getId() == updateUserDto.id) {
+                user.setBankAccounts(userBankAccounts);
                 user.setFirstName(updateUserDto.firstName);
                 user.setLastName(updateUserDto.lastName);
                 user.setEmail(updateUserDto.email);
