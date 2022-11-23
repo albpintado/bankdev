@@ -13,7 +13,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class UserControllerTests {
+public class BankAccountControllerTests {
 
     @InjectMocks
     private UserController controller = new UserController();
