@@ -24,17 +24,18 @@ public class UserRepository {
 
     public String create(User user) {
         this.users.setUsers(Stream.concat(this.users.getUsers(), Stream.of(user)));
-        this.users.setCount(this.users.getCount() + 1);
         return "Created";
     }
 
-    public String update(int userId, String newName) {
-        User streamUser = this.users.getUsers().filter(user -> user.getId() == userId).findAny().get();
-        streamUser.setFirstName(newName);
-        return streamUser.getFirstName();
+    public String update(int id, String newName) {
+        User user = getOne(id);
+        user.setFirstName(newName);
+        return user.getFirstName();
     }
 
-    public String delete() {
+    public String delete(int id) {
+        Stream<User> newUsers = this.users.getUsers().filter(user -> user.getId() != id);
+        this.users.setUsers(newUsers);
         return "Deleted";
     }
 }

@@ -48,8 +48,12 @@ public class UserRepositoryTests {
 
     @Test
     public void UserRepository_WhenDELETE_ReturnsAString() {
-        String userNameReturned = this.repo.delete();
+        String userNameReturned = this.repo.delete(0);
+        int dataCount = this.repo.getDataCount();
+
 
         assertEquals("Deleted", userNameReturned);
+        assertEquals(8, dataCount);
+
     }
 }

@@ -29,6 +29,7 @@ public class Data {
 
     public void setUsers(Stream<User> users) {
         this.users = users;
+        this.count = (int) users.count();
     }
 
     public int getCount() {
