@@ -33,6 +33,8 @@ public class BankAccountServiceTests {
 
         BankAccount bankAccount = new BankAccount(0, createBankAccountDto.userId, createBankAccountDto.name);
 
+        Mockito.when(this.repo.create(createBankAccountDto)).thenReturn(bankAccount);
+
         BankAccount actualResult = this.service.create(createBankAccountDto);
         assertEquals(bankAccount, actualResult);
     }
