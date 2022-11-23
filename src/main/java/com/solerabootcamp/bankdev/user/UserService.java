@@ -11,8 +11,8 @@ public class UserService {
     @Autowired
     private UserRepository repo;
 
-    public User getOne(int id) {
-        User user = this.repo.getOne(id);
+    public User getOne(GetUserDto getUserDto) {
+        User user = this.repo.getOne(getUserDto.id);
         return user;
     }
 

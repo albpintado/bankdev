@@ -11,12 +11,12 @@ public class UserController {
     private UserService service;
 
     @GetMapping()
-    public String getOne() {
-        return "Alberto";
+    public User getOne(@RequestBody GetUserDto getUserDto) {
+        return this.service.getOne(getUserDto);
     }
 
     @PostMapping()
-    public User create(CreateUserDto createUserDto) {
+    public User create(@RequestBody CreateUserDto createUserDto) {
         return this.service.create(createUserDto);
     }
 

@@ -2,24 +2,36 @@ package com.solerabootcamp.bankdev.user;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.anyInt;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class UserControllerTests {
 
-    @Autowired
-    private UserController controller;
+    @InjectMocks
+    private UserController controller = new UserController();
+
+    @Mock
+    private UserService service;
 
     @Test
     public void UserController_WhenGET_ReturnsUserNameAsString() {
-        String userNameReturned = this.controller.getOne();
+        GetUserDto getUserDto = new GetUserDto();
+        getUserDto.id = 1;
+        User expectedUser = new User(1, "Luis", "Pintado", "luis", "A12345678!", "", "");
 
-        assertEquals("Alberto", userNameReturned);
+        Mockito.when(this.service.getOne(getUserDto)).thenReturn(expectedUser);
+
+        User actualUser = this.controller.getOne(getUserDto);
+
+        assertEquals(expectedUser, actualUser);
     }
 
     @Test
