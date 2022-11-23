@@ -27,9 +27,11 @@ public class BankAccountServiceTests {
 
     @Test
     public void BankAccountService_WhenCreate_CreatesBankAccountAndLinksItToUser() {
-        int bankAccountId = 1;
-        int actualResult = this.service.create();
-        assertEquals(bankAccountId, actualResult);
+        CreateBankAccountDto createBankAccountDto = new CreateBankAccountDto();
+        createBankAccountDto.name = "Cuenta 1";
+        createBankAccountDto.userId = 1;
+        int actualResult = this.service.create(CreateBankAccountDto);
+        assertEquals(createBankAccountDto.userId, actualResult);
     }
 
     @Test
