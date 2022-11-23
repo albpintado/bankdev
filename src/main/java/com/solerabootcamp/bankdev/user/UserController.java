@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @PutMapping()
-    public String update(@RequestBody UpdateUserDto updateUserDto) {
+    public User update(@RequestBody UpdateUserDto updateUserDto) {
         return this.service.update(updateUserDto);
     }
 }

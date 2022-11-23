@@ -20,10 +20,10 @@ public class DataTests {
 
     @Test
     public void Data_WhenGetAfterCreation_ReturnsUsersAndThirdIsExpected() {
-        Stream<User> users = this.data.getUsers();
+        List<User> users = this.data.getUsers();
         int usersCount = this.data.getCount();
 
-        User firstUser = users.filter(streamUser -> streamUser.getId() == 3).findFirst().get();
+        User firstUser = users.stream().filter(streamUser -> streamUser.getId() == 3).findFirst().get();
 
         assertEquals(9, usersCount);
         assertEquals(3, firstUser.getId());

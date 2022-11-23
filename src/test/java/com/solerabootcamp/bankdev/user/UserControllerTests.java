@@ -35,18 +35,4 @@ public class UserControllerTests {
 
         assertEquals(expectedUser, actualUser);
     }
-
-    @Test
-    public void UserController_WhenPUT_ReturnsNewUserNameAsString() {
-        UpdateUserDto userDto = new UpdateUserDto();
-        userDto.id = 1;
-        userDto.firstName = "Nuevo";
-        userDto.lastName = "Nuevo";
-        userDto.email = "Nuevo";
-        userDto.phone = "Nuevo";
-
-        String updateMessage = this.controller.update(userDto);
-
-        assertEquals("Updated", updateMessage);
-    }
 }

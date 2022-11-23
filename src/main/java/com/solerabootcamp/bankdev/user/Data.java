@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.stream.Stream;
 
 public class Data {
-    private Stream<User> users;
+    private List<User> users;
 
     private int count;
 
@@ -19,17 +19,17 @@ public class Data {
         Random random = new Random();
         String randomLastName = names.get(random.nextInt(names.size()));
 
-        this.users = streamNames.map(name -> new User(userId++, name, randomLastName, name.toLowerCase(), "bootcamp4", name.toLowerCase() + "@solera.com", Math.floor(Math.random() * 1000000000) + "" ));
+        this.users = streamNames.map(name -> new User(userId++, name, randomLastName, name.toLowerCase(), "bootcamp4", name.toLowerCase() + "@solera.com", Math.floor(Math.random() * 1000000000) + "" )).toList();
         this.count = names.size();
     }
 
-    public Stream<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Stream<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
-        this.count = (int) users.count();
+        this.count = (int) users.size();
     }
 
     public int getCount() {

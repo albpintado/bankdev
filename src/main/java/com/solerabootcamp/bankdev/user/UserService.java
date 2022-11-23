@@ -24,7 +24,7 @@ public class UserService {
         return userToSave;
     }
 
-    public String update(UpdateUserDto updateUserDto) {
+    public User update(UpdateUserDto updateUserDto) {
         Stream<User> users = this.repo.getUsers().stream().map(user -> {
             if (user.getId() == updateUserDto.id) {
                 user.setFirstName(updateUserDto.firstName);
@@ -36,6 +36,7 @@ public class UserService {
             return user;
         });
 
-        return this.repo.update(users);
+        this.repo.update(users);
+        return this.repo.getOne(updateUserDto.id);
     }
 }
