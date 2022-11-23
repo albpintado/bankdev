@@ -23,14 +23,14 @@ public class UserRepositoryTests {
     }
 
     @Test
-    public void UserRepository_WhenGetDataCount_Returns9() {
+    public void UserRepository_WhenGetDataCount_ReturnsDataCount() {
         int dataCount = this.repo.getDataCount();
 
         assertEquals(9, dataCount);
     }
 
     @Test
-    public void UserRepository_WhenPOST_ReturnsUserNameAsString() {
+    public void UserRepository_WhenCreate_ReturnsCreatedMessage() {
         User user = new User(10, "Jose", "Perez", "jose", "A12345678!", "jose".toLowerCase() + "@gmail.com", Math.floor(Math.random() * 1000000000) + "" );
         String userNameCreatedResponse = this.repo.create(user);
         int dataCount = this.repo.getDataCount();
@@ -40,14 +40,14 @@ public class UserRepositoryTests {
     }
 
     @Test
-    public void UserRepository_WhenPUT_ReturnsNewUserNameAsString() {
+    public void UserRepository_WhenUpdate_ReturnsNewUserName() {
         String userNameReturned = this.repo.update(0, "Luis");
 
         assertEquals("Luis", userNameReturned);
     }
 
     @Test
-    public void UserRepository_WhenDELETE_ReturnsAString() {
+    public void UserRepository_WhenDelete_ReturnsDeletedMessageAndNewDataCount() {
         String userNameReturned = this.repo.delete(0);
         int dataCount = this.repo.getDataCount();
 
