@@ -26,6 +26,13 @@ public class BankAccountServiceTests {
     private BankAccountRepository repo;
 
     @Test
+    public void BankAccountService_WhenCreate_CreatesBankAccountAndLinksItToUser() {
+        int bankAccountId = 1;
+        int actualResult = this.service.create();
+        assertEquals(bankAccountId, actualResult);
+    }
+
+    @Test
     public void BankAccountService_WhenDelete_ReturnsBankAccountsListWithoutDeleted() {
         DeleteBankAccountDto deleteBankAccountDto = new DeleteBankAccountDto();
         deleteBankAccountDto.id = 0;
