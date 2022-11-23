@@ -26,8 +26,8 @@ public class UserService {
         return userToSave;
     }
 
-    public boolean login() {
-        return true;
+    public boolean login(LoginDto loginDto) {
+        return this.repo.login(loginDto.username, loginDto.password);
     }
 
     public User update(UpdateUserDto updateUserDto) {
